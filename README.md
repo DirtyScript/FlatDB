@@ -1,4 +1,4 @@
-Dirty Script > Data-Base
+Dirty Script > FlatDB
 ==========================
 
 PHP flat file data base class.<br />
