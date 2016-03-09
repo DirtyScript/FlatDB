@@ -1,0 +1,22 @@
+{
+    "name": "DirtyScript/FlatDB",
+    "type": "library",
+    "description": "Flat file simple key-value DataBase",
+    "keywords": ["database","flatfile"],
+    "homepage": "http://dirty-script.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "RemRem",
+            "email": "remrem@dirty-script.com",
+            "homepage": "http://dirty-script.com/"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/DirtyScript/FlatDB/issues",
+        "source": "https://github.com/DirtyScript/FlatDB"
+    },
+    "require": {
+        "php": ">=5.3.2"
+    }
+}
