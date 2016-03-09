@@ -1,5 +1,6 @@
 {
-    "name": "DirtyScript/FlatDB",
+    "name": "dirtyscript/flatdb",
+    "version": "0.01.001",
     "type": "library",
     "description": "Flat file simple key-value DataBase",
     "keywords": ["database","flatfile"],

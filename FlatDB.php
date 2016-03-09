@@ -13,13 +13,16 @@
  * @author    RemRem <remrem@dirty-script.com>
  * @copyright Copyright (C) dirty-script.com,  All rights reserved.
  * @licence   MIT
- * @version   0.01.000 beta
+ * @version   0.01.001 beta
  * @link      http://dirty-script/Data-Base
  * @link      https://github.com/Dirty-Script/Data-Base
  */
 
 /**
  * CHANGELOG
+ * 
+ * 0.01.001 2016-03-09
+ *  - test integration to composer
  * 
  * 0.01.000 2016-03-05
  *  - add db_file_exists() to check if db file exists
@@ -75,7 +78,7 @@ class FlatDB
 	/**
 	 * current version
 	 */
-	private $version = '0.01.000';
+	private $version = '0.01.001';
 
 	/**
 	 * database
