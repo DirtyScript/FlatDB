@@ -78,7 +78,7 @@ class FlatDB
 	/**
 	 * current version
 	 */
-	private $version = '0.01.001';
+	private $version = '0.01.004';
 
 	/**
 	 * database
