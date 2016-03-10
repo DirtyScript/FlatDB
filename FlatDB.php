@@ -13,59 +13,9 @@
  * @author    RemRem <remrem@dirty-script.com>
  * @copyright Copyright (C) dirty-script.com,  All rights reserved.
  * @licence   MIT
- * @version   0.01.001 beta
+ * @version   0.02.000 beta
  * @link      http://dirty-script/Data-Base
  * @link      https://github.com/Dirty-Script/Data-Base
- */
-
-/**
- * CHANGELOG
- * 0.01.001 2016-03-09
- *  - test integration to composer
- * 
- * 0.01.000 2016-03-05
- *  - add db_file_exists() to check if db file exists
- *  - add param auto_create_db to __construct, default, false
- *  - rename exception class from DSSBException to FlatDBException
- *  - add MIT Licence legal stuff (see below)
- * 
- * 0.00.701 2016-02-29
- *  - change version format X.X.X > X.XX.XXX
- *  - update some part to use with composer
- *  - rename class from DSDB to FlatDB
- * 
- * 0.0.7 2014-11-19
- *  - add data_next_available_key()
- *  - add data_get_last_line()
- *  - remove data('test') and all tests linked to data('test')
- * 
- * 0.0.6 2014-10-11
- *  - add $last_error
- *  - add get_last_error()
- */
-
-/**
- * The MIT License (MIT)
- * Copyright (c) 2016 RemRem <remrem@dirty-script.com>
- * 
- * Permission is hereby granted, free of charge, to any person obtaining 
- * a copy of this software and associated documentation files 
- * (the "Software"), to deal in the Software without restriction, 
- * including without limitation the rights to use, copy, modify, merge, 
- * publish, distribute, sublicense, and/or sell copies of the Software, 
- * and to permit persons to whom the Software is furnished to do so, 
- * subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be included 
- * in all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
- * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- * IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
- * CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
 
@@ -77,7 +27,7 @@ class FlatDB
 	/**
 	 * current version
 	 */
-	private $version = '0.01.004';
+	private $version = '0.02.000';
 
 	/**
 	 * database
@@ -108,6 +58,7 @@ class FlatDB
 			if ($auto_create_db !== false){
 				$this->db_create();
 			} else {
+				$this->db_file = false;
 				throw new \Exception('db file ' . $this->db_file .' doesn\'t exists !');
 				return false;
 			}
@@ -496,7 +447,7 @@ class FlatDB
 					
 				}
 			}
-			$i++;
+			++$i;
 		}
 
 		return $found;
