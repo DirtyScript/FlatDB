@@ -1,5 +1,6 @@
 {
     "name": "dirtyscript/flatdb",
+    "version": "0.01.001-beta",
     "type": "library",
     "description": "Flat file simple key-value DataBase",
     "keywords": ["database","flatfile"],
@@ -22,9 +23,4 @@
     "autoload": {
         "psr-0": { "dirtyscript\\flatdb": "/" }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.x-beta"
-        }
-    }
 }
