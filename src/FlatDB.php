@@ -20,7 +20,6 @@
 
 /**
  * CHANGELOG
- * 
  * 0.01.001 2016-03-09
  *  - test integration to composer
  * 
@@ -109,7 +108,7 @@ class FlatDB
 			if ($auto_create_db !== false){
 				$this->db_create();
 			} else {
-				throw new FlatDBException('db file ' . $this->db_file .' doesn\'t exists !');
+				throw new \Exception('db file ' . $this->db_file .' doesn\'t exists !');
 				return false;
 			}
 		}
@@ -133,7 +132,7 @@ class FlatDB
 	 */
 	public function db_create(){
 		if (false === file_put_contents($this->db_file,"<?php /* <!--\n",LOCK_EX)){
-			throw new FlatDBException('Could not create file ' . $this->db_file);
+			throw new \Exception('Could not create file ' . $this->db_file);
 			return false;
 		}
 		return true;
@@ -159,7 +158,7 @@ class FlatDB
 
 		if ($this->db_create($this->db_file)){
 			if (false === file_put_contents($this->db_file, $lines, FILE_APPEND | LOCK_EX)){
-				throw new FlatDBException('Could not push data in db file ' . $this->db_file);
+				throw new \Exception('Could not push data in db file ' . $this->db_file);
 			} else {
 				return true;
 			}
@@ -187,7 +186,7 @@ class FlatDB
 
 		if (!$handle) {
 			// error opening the file.
-			throw new FlatDBException('db file read (FAIL)');
+			throw new \Exception('db file read (FAIL)');
 		}
 
 		while (($line = fgets($handle)) !== false) {
@@ -317,7 +316,7 @@ class FlatDB
 				$this->datas[$data_id] = $data;
 				$success = file_put_contents($this->db_file, $line, FILE_APPEND | LOCK_EX);
 				if (false === $success){
-					throw new FlatDBException('Unable to push datas in db file, check the read/write access to your dir_db');
+					throw new \Exception('Unable to push datas in db file, check the read/write access to your dir_db');
 				}
 			} else {
 				$this->datas[$data_id] = $data;
@@ -335,7 +334,7 @@ class FlatDB
 			if (!$this->data_key_exists($data_id)){
 				$this->datas[$data_id] = $data;
 				if (false === file_put_contents($this->db_file, $line, FILE_APPEND | LOCK_EX)){
-					throw new FlatDBException('Unable to push datas in db file, check the read/write access to your dir_db');
+					throw new \Exception('Unable to push datas in db file, check the read/write access to your dir_db');
 				}
 				// return true;
 				return $data_id;
@@ -344,7 +343,7 @@ class FlatDB
 				return false;
 			}
 		}
-		throw new FlatDBException('unknow error');
+		throw new \Exception('unknow error');
 		return false;
 	}
 
@@ -504,4 +503,3 @@ class FlatDB
 	}
 }
 
-class FlatDBException extends Exception {}
