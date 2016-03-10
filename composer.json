@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DirtyScript\\FlatDB": "src/"
+            "DirtyScript\\FlatDB\\": "src/"
         }
     }
 }
