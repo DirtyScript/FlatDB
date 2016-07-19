@@ -1,6 +1,10 @@
 /**
  * CHANGELOG
  * 
+ * 0.02.001 2016-07-20
+ *  - add data_increments()
+ *  - add data_decrements()
+ * 
  * 0.02.000 2016-03-10
  *  - composer ready
  *  - add namespace DirtyScript\FlatDB

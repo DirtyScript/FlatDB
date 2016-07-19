@@ -13,7 +13,7 @@
  * @author    RemRem <remrem@dirty-script.com>
  * @copyright Copyright (C) dirty-script.com,  All rights reserved.
  * @licence   MIT
- * @version   0.02.000 beta
+ * @version   0.02.001 beta
  * @link      http://dirty-script/Data-Base
  * @link      https://github.com/Dirty-Script/Data-Base
  */
@@ -27,7 +27,7 @@ class FlatDB
 	/**
 	 * current version
 	 */
-	private $version = '0.02.000';
+	private $version = '0.02.001';
 
 	/**
 	 * database
@@ -452,5 +452,55 @@ class FlatDB
 
 		return $found;
 	}
+
+	/**
+	 * increments a value, founded by his key
+	 * data value must be an int
+	 * 
+	 * @return @mixed 
+	 *            false , if data isn't an int
+	 *            int , the new value
+	 */
+	public function data_increments( $data_id , $create = true ){
+		$data = $this->data_get( $data_id );
+		if (!$this->data_test($data,'is_int')){
+			if ($create === true
+			 && $this->data_push( $data_id , 1 ) !== false
+			){
+				return 1;
+			}
+			return false;
+		}
+		++$data;
+		$this->data_push($data_id,$data,true);
+		return $data;
+	}
+
+	/**
+	 * decrements a value, founded by his key
+	 * data value must be an int
+	 * 
+	 * @return @mixed 
+	 *            false , if data isn't an int
+	 *            int , the new value
+	 */
+	public function data_decrements( $data_id ){
+		$data = $this->data_get( $data_id );
+		if (!$this->data_test($data,'is_int')){
+			return false;
+		}
+		if (!$this->data_test($data,'is_int')){
+			if ($create === true
+			 && $this->data_push( $data_id , -1 ) !== false
+			){
+				return -1;
+			}
+			return false;
+		}
+		--$data;
+		$this->data_push($data_id,$data,true);
+		return $data;
+	}
+
 }
 
