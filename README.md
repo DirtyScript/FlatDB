@@ -23,7 +23,7 @@ need more test and improvements, so use it for fun/test/debug/small project...
  * @copyright  2014-2016
  * @licence    MIT
  * @link       http://dirty-script.com/Data-Base
- * @link       https://github.com/Dirty-Script/Data-Base
+ * @link       https://github.com/DirtyScript/FlatDB
  */
 ```
 
