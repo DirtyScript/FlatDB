@@ -1,6 +1,10 @@
 /**
  * CHANGELOG
  * 
+ * 0.03.000 2016-08-06
+ *  - some fix for data_search(), 
+ *    need to improve for array support
+ * 
  * 0.02.001 2016-07-20
  *  - add data_increments()
  *  - add data_decrements()

@@ -5,7 +5,8 @@
  * a flat file basic data base
  * manage datas by key(id)
  * 
- * This is a BETA, so, please, don't use this script in production.
+ * This is a BETA, so, please, use it with caution and test it before use 
+ * in production !
  * If you want to impove, debug (...), go to the github of this project.
  * Thanks
  * 
@@ -13,9 +14,9 @@
  * @author    RemRem <remrem@dirty-script.com>
  * @copyright Copyright (C) dirty-script.com,  All rights reserved.
  * @licence   MIT
- * @version   0.02.001 beta
+ * @version   0.03.000 beta
  * @link      http://dirty-script/Data-Base
- * @link      https://github.com/Dirty-Script/Data-Base
+ * @link      https://github.com/DirtyScript/FlatDB
  */
 
 
@@ -27,7 +28,7 @@ class FlatDB
 	/**
 	 * current version
 	 */
-	private $version = '0.02.001';
+	private $version = '0.03.000';
 
 	/**
 	 * database
@@ -389,6 +390,8 @@ class FlatDB
 	/**
 	 * test a value
 	 * 
+	 * to do : add support for regex:
+	 * 
 	 * return @bool
 	 */
 	private function data_test( $string , $test ){
@@ -414,39 +417,28 @@ class FlatDB
 
 	/**
 	 * search data
+	 * at this moment, only search on value when value is a string
+	 * 
+	 * to do : add support for array value
+	 * 
 	 * @param array $test
-	 * use a -(int) key when your db values are not an array
-	 *      array(
-	 *        'key-1' => array('is_int', '>10'),
-	 *        'key-2' => array('!empty')
+	 *   array(
+	 *     array('is_int', '>10'),
+	 *       array('!empty')
 	 * @return array founded
 	 */
 	public function data_search( $tests , $limit = 10){
 		$found = array();
 		$i = 0;
-		foreach ($tests as $test_key => $test_test){
-			// search when data is a string
-			if (is_numeric($test_key) && $test_key < 0){
-				if ($i === 0){
-					foreach ($this->datas as $id => $data){
-						if (!is_string($data)){continue;}
-						if ($this->data_test($data,$test_test)){
-							$found[] = $id;
-						}
-					}
-				}
-			// search when data is an array
-			} else {
-				foreach ($this->datas as $id => $data){
-					if (!isset($data[$test_key])){continue;}
-					if ($i === 0){
-						if ($this->data_test($data[$test_key],$test_test)){
-							$found[] = $id;
-						}
-					}
-					
+		foreach ($tests as $test_test){
+			foreach ($this->datas as $id => $data){
+				if (is_string($data)
+				 && $this->data_test($data,$test_test)
+				){
+					$found[] = $id;
 				}
 			}
+
 			++$i;
 		}
 
@@ -503,4 +495,3 @@ class FlatDB
 	}
 
 }
-
